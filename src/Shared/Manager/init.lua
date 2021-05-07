@@ -87,7 +87,7 @@ function Manager.loadModules()
 				local module = Manager.loadModule(child)
 				
 				-- Ensure module is existent and
-				-- didnt error upon requiring.
+				-- didn't error upon requiring.
 				if module then
 					Manager.cacheModule(child.Name, module)
 				end
