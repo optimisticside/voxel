@@ -1,0 +1,20 @@
+{
+  "name": "voxel",
+  "tree": {
+    "$className": "DataModel",
+
+    "ServerScriptService": {
+      "$className": "ServerScriptService",
+      "VoxelLoader": {
+        "$path": "loader"
+      }
+    },
+
+    "ServerStorage": {
+      "$className": "ServerStorage",
+      "Voxel": {
+        "$path": "src"
+      }
+    }
+  }
+}
