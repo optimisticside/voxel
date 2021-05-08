@@ -23,9 +23,6 @@ function Core.init(loader)
 	Manager.loadModules()
 	Manager.initModules()
 
-	print(Manager.locations)
-	print(Manager.modules)
-
 	-- Update fields.
 	Core.loader = loader
 	Core.manager = Manager
