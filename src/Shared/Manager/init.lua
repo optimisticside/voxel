@@ -2,6 +2,8 @@
 -- 5/7/2021
 -- Module management-system
 
+local IGNORE_INDICATOR = "IgnoreModule"
+
 local Manager = {}
 
 Manager.modules = {}
@@ -83,7 +85,7 @@ function Manager.loadModules()
 			print(child)
 			-- Ignore if module ignore indication
 			-- (This is used for this module.)
-			if not child:FindFirstChild("IgnoreModule") then
+			if not child:FindFirstChild(IGNORE_INDICATOR) then
 				local module = Manager.loadModule(child)
 				
 				-- Ensure module is existent and
