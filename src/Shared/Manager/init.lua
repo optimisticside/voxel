@@ -36,7 +36,6 @@ function Manager.loadModule(toRequire)
 	if success then
 		return result
 	end
-	print("Unable to load " .. tostring(toRequire) .. ": " .. result)
 end
 
 -- Caches a module in local storage.
@@ -82,7 +81,6 @@ function Manager.loadModules()
 		end
 
 		for _, child in ipairs(children) do
-			print(child)
 			-- Ignore if module ignore indication
 			-- (This is used for this module.)
 			if not child:FindFirstChild(IGNORE_INDICATOR) then
@@ -101,10 +99,8 @@ end
 -- Initialize all modules.
 function Manager.initModules()
 	for _, cachedModule in pairs(Manager.modules) do
-		print(cachedModule)
 		local module = cachedModule.module
 		if typeof(module) == "table" and module.init then
-			print'init'
 			module:init()
 		end
 	end
