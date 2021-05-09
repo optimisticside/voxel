@@ -7,7 +7,7 @@ Connection.__index = Connection
 
 -- Connect the connection to its signal.
 function Connection:Connect()
-	self.connection = self.signal.bindable:Connect(function()
+	self.connection = self.signal.event:Connect(function()
 		self.func(table.unpack(self.signal.arguments))
 	end)
 	self.Connected = true

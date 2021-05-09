@@ -36,6 +36,7 @@ function Manager.loadModule(toRequire)
 	if success then
 		return result
 	end
+	print("Unable to load " .. tostring(toRequire) .. ": " .. result)
 end
 
 -- Caches a module in local storage.
@@ -52,7 +53,7 @@ function Manager.getModule(name)
 	-- Check if module is already cached.
 	local cached = Manager.modules[name]
 	if cached then
-		return module
+		return cached
 	end
 
 	-- Find the module from known
@@ -73,7 +74,6 @@ end
 -- Load all modules.
 function Manager.loadModules()
 	for _, location in ipairs(Manager.locations) do
-		print(location)
 		-- Agagin, assume location is a table
 		-- unless it's an instance.
 		local children = location
@@ -100,9 +100,11 @@ end
 
 -- Initialize all modules.
 function Manager.initModules()
-	for _, cachedModule in ipairs(Manager.modules) do
+	for _, cachedModule in pairs(Manager.modules) do
+		print(cachedModule)
 		local module = cachedModule.module
 		if typeof(module) == "table" and module.init then
+			print'init'
 			module:init()
 		end
 	end

@@ -17,15 +17,16 @@ function Core.init(loader)
 	shared.Parent = game:GetService("ReplicatedStorage")
 	shared.Name = "Voxel"
 
+	-- Update fields and set global.
+	Core.loader = loader
+	Core.manager = Manager
+	_G.Voxel = Core
+
 	-- Load and initialize modules.
 	Manager.locations = { server, shared }
 	Manager.init(Core)
 	Manager.loadModules()
 	Manager.initModules()
-
-	-- Update fields.
-	Core.loader = loader
-	Core.manager = Manager
 end
 
 return Core

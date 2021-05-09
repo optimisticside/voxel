@@ -12,7 +12,7 @@ function Maid:doCleaning()
 
 		if objectType == "Instance" then
 			object:Destroy()
-		if objectType == "RBXScriptConnection" then
+		elseif objectType == "RBXScriptConnection" then
 			object:Disconnect()
 		else
 			-- Assume this is a custom object

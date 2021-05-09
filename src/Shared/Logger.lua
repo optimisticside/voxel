@@ -4,18 +4,33 @@
 
 local Logger = {}
 
+Logger.systemLogs = {}
+Logger.joinLogs = {}
+Logger.leaveLogs = {}
+Logger.messageLogs = {}
+Logger.commandLogs = {}
+
 -- Prints a message and
 -- does nothing else.
 function Logger.print(message)
 	print(message)
 end
 
+-- Writes a raw log to the table.
+function Logger.writeLog(logTable, data)
+	-- Insert timestamp if nonexistent.
+	if not data.timestamp then
+		data.timestamp = time()
+	end
+	logTable[#logTable+1] = data
+end
+
 -- Adds a log to a local table.
 function Logger.addLog(message, timestamp)
-	Logger.logs[#logger.logs+1] = {
+	Logger.writeLog(Logger.systemLogs, {
 		message = message,
 		timestamp = timestamp
-	}
+	})
 end
 
 -- Main logging routine.
